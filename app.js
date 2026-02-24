@@ -89,7 +89,6 @@ let jobs = [
   },
 ];
 
-
 let currentFilter = "All";
 
 function displayJobs() {
@@ -124,7 +123,6 @@ function displayJobs() {
     return;
   }
 
-  
   //   Each Job Card---
   container.innerHTML = filteredJobs
     .map(
@@ -169,3 +167,32 @@ function displayJobs() {
     )
     .join("");
 }
+
+// setStatus function ---
+function setStatus(id, newStatus) {
+  const index = jobs.findIndex((j) => j.id === id);
+  jobs[index].status = jobs[index].status === newStatus ? "All" : newStatus;
+  displayJobs();
+}
+
+// deleteJob function---
+function deleteJob(id) {
+  jobs = jobs.filter((j) => j.id !== id);
+  displayJobs();
+}
+
+// switchTab function---
+function switchTab(status, btn) {
+  currentFilter = status;
+
+  document.querySelectorAll(".tab-link").forEach((t) => {
+    t.classList.remove("bg-blue-700", "text-white");
+    t.classList.add("bg-white", "text-gray-500");
+  });
+
+  btn.classList.add("bg-blue-700", "text-white");
+  btn.classList.remove("bg-white", "text-gray-500");
+  displayJobs();
+}
+
+displayJobs();
