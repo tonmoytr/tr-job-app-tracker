@@ -1,7 +1,7 @@
 ## 1. Difference between getElementById, getElementsByClassName, and querySelector?
  * - getElementById: It find only one thing using ID. It is very fast.
    - getElementsByClassName: It find many things with same class. It give a list.
-   - querySelector: It is modern. You can use CSS style like . or #. querySelectorAll find all finds all the elements, not just the first one.
+   - querySelector: It is modern. You can use CSS style like . or #. querySelectorAll finds all the elements, not just the first one.
 
 ## How to create and insert new element?
  * First, we use document.createElement('div') to make it. Then we use .innerText to put some text. Last, we use .appendChild() to put it inside the main HTML body or a div.
