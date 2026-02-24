@@ -123,3 +123,49 @@ function displayJobs() {
         `;
     return;
   }
+
+  
+  //   Each Job Card---
+  container.innerHTML = filteredJobs
+    .map(
+      (job) => `
+        <div class="bg-white border border-gray-100 rounded-xl p-8 shadow-sm relative group hover:shadow-md transition">
+            <button onclick="deleteJob(${job.id})" class="absolute top-6 right-6 p-2 rounded-full bg-gray-50 text-gray-300 hover:text-red-500 hover:bg-red-50 transition">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+            <div class="mb-2">
+                <h3 class="text-xl font-bold text-blue-900">${job.company}</h3>
+                <p class="text-gray-500">${job.position}</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-400 mb-4">
+                <span>${job.location}</span>
+                <span>•</span>
+                <span>${job.type}</span>
+                <span>•</span>
+                <span>${job.salary}</span>
+            </div>
+            <div class="inline-block px-3 py-1 rounded text-xs font-bold uppercase mb-4 tracking-wider ${
+              job.status === "Interview"
+                ? "bg-emerald-50 text-green-500"
+                : job.status === "Rejected"
+                  ? "bg-red-50 text-red-500"
+                  : "bg-blue-50 text-blue-500"
+            }">
+                ${job.status === "All" ? "NOT APPLIED" : job.status.toUpperCase()}
+            </div>
+            <p class="text-gray-500 text-sm leading-relaxed mb-6 max-w-3xl">${job.description}</p>
+            <div class="flex gap-4">
+                <button onclick="setStatus(${job.id}, 'Interview')" 
+                    class="px-6 py-2 rounded border-2 font-bold text-sm transition ${job.status === "Interview" ? "bg-green-500 border-green-500 text-white" : "border-green-500 text-green-500 hover:bg-emerald-50"}">
+                    INTERVIEW
+                </button>
+                <button onclick="setStatus(${job.id}, 'Rejected')" 
+                    class="px-6 py-2 rounded border-2 font-bold text-sm transition ${job.status === "Rejected" ? "bg-red-500 border-red-500 text-white" : "border-red-500 text-red-500 hover:bg-red-50"}">
+                    REJECTED
+                </button>
+            </div>
+        </div>
+    `,
+    )
+    .join("");
+}
