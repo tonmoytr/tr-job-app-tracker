@@ -41,4 +41,31 @@
     </header>
 
     <hr class="border-gray-200 mb-8" />
+
+    
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-bold text-blue-900">Available Jobs</h2>
+      <span id="jobs-count-text" class="text-gray-500 text-sm">8 jobs</span>
+    </div>
+
+    <div class="flex gap-4 mb-8">
+      <button
+        onclick="switchTab('All', this)"
+        class="tab-link px-6 py-2 rounded-md bg-blue-500 text-white font-medium transition"
+      >
+        All
+      </button>
+      <button
+        onclick="switchTab('Interview', this)"
+        class="tab-link px-6 py-2 rounded-md bg-white text-gray-500 font-medium hover:bg-gray-100 transition"
+      >
+        Interview
+      </button>
+      <button
+        onclick="switchTab('Rejected', this)"
+        class="tab-link px-6 py-2 rounded-md bg-white text-gray-500 font-medium hover:bg-gray-100 transition"
+      >
+        Rejected
+      </button>
+    </div>
 </html>
