@@ -88,3 +88,38 @@ let jobs = [
       "Perform cleanings, take dental X-rays, and educate patients on proper oral hygiene practices.",
   },
 ];
+
+
+let currentFilter = "All";
+
+function displayJobs() {
+  const container = document.getElementById("jobs-list-container");
+  const filteredJobs =
+    currentFilter === "All"
+      ? jobs
+      : jobs.filter((j) => j.status === currentFilter);
+
+  // Update Dashboard Counts
+  document.getElementById("total-count").innerText = jobs.length;
+  document.getElementById("interview-count").innerText = jobs.filter(
+    (j) => j.status === "Interview",
+  ).length;
+  document.getElementById("rejected-count").innerText = jobs.filter(
+    (j) => j.status === "Rejected",
+  ).length;
+  document.getElementById("jobs-count-text").innerText =
+    `${filteredJobs.length} jobs`;
+
+  //if there are no jobs to show--
+  if (filteredJobs.length === 0) {
+    container.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-20 text-center bg-white border border-gray-100 rounded-xl shadow-sm">
+                <div class="bg-blue-50 p-6 rounded-xl mb-4">
+                     <img src="./jobs.png" alt="file image" class="w-16 h-16 text-center">
+                </div>
+                <h3 class="text-2xl font-bold text-blue-900">No jobs available</h3>
+                <p class="text-gray-400 mt-2">Check back soon for new opportunities</p>
+            </div>
+        `;
+    return;
+  }
